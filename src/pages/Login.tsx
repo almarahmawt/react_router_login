@@ -19,10 +19,20 @@ interface LoginParams {
   }
 
 async function doLogin({ email, password }: LoginParams): Promise<string> {
-    // Use your own endpoint
-    // TODO: Hit your back-end endpoint
     console.log({ email, password });
-    return "initoken";
+    // Use your own endpoint
+    const response = await fetch("http://localhost:8000/api/v1/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            },
+        body: JSON.stringify({
+            email,
+            password,
+        }),
+    });
+    const data = await response.json();
+    return data.token;
   }
 
 const Login: React.FC = () => {
