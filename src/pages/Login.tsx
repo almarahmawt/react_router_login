@@ -142,6 +142,7 @@ const Login: React.FC = () => {
                             <GoogleOAuthProvider clientId="1000002619085-urddgg9t25cq9mip594548ddd37v4qg2.apps.googleusercontent.com">
                                 <GoogleLogin
                                     onSuccess={credentialResponse => {
+                                        // console.log(credentialResponse)
                                         if (credentialResponse.credential) {                                              
                                             handleLoginWithGoogle(credentialResponse.credential);
                                         }
